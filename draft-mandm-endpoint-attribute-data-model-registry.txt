@@ -1,0 +1,224 @@
+
+
+
+
+SACM Working Group                                          A. Montville
+Internet-Draft                                                 B. Munyan
+Intended status: Standards Track                                     CIS
+Expires: February 7, 2019                                August 06, 2018
+
+
+              SACM Endpoint Attribute Data Model Registry
+     draft-mandm-sacm-endpoint-attribute-data-model-registry-latest
+
+Abstract
+
+   This memo describes a an interface to registries used to store
+   endpoint attribute data models.  These data models are used for the
+   purpose of automated endpoint assessment.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at http://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on February 7, 2019.
+
+Copyright Notice
+
+   Copyright (c) 2018 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (http://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+
+
+
+
+
+Montville & Munyan      Expires February 7, 2019                [Page 1]
+
+Internet-Draft             SACM EADM Registry                August 2018
+
+
+Table of Contents
+
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+     1.1.  Scope of Solution . . . . . . . . . . . . . . . . . . . .   2
+   2.  Terms and Definitions . . . . . . . . . . . . . . . . . . . .   2
+   3.  Repository Interface  . . . . . . . . . . . . . . . . . . . .   2
+   4.  Repository Data Model Metadata  . . . . . . . . . . . . . . .   3
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   3
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .   3
+   7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   3
+   8.  Change Log  . . . . . . . . . . . . . . . . . . . . . . . . .   4
+   9.  Contributors  . . . . . . . . . . . . . . . . . . . . . . . .   4
+   10. Normative References  . . . . . . . . . . . . . . . . . . . .   4
+   Appendix A.  The Attic  . . . . . . . . . . . . . . . . . . . . .   4
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   4
+
+1.  Introduction
+
+   Security automation assessments (i.e. vulnerability assessment,
+   configuration assessment, etc.) often require enumerations of
+   endpoint attributes to be known before such assessments can take
+   place.  As technologies evolve and emerge, enumerations may change
+   and new enumerations come into existence.  As such changes to the set
+   of enumerations happen frequently.  A problem yet to be solved in
+   security automation is the ability for enterprises to quickly, even
+   dynamically, acquire (or potentially define) enumerations of endpoint
+   attributes and make those enumerations available to the security
+   automation tools operating in their enterprise.
+
+1.1.  Scope of Solution
+
+   The scope of this solution is constrained to the repository
+   interface, and specifically avoids details about the data models
+   stored in the repository.  This is because data models may vary,
+   depending on attribute collection needs.  Coarsely, network devices
+   are likely to have models represented using YANG, whereas traditional
+   devices may be represented using OVAL.
+
+2.  Terms and Definitions
+
+   TBD
+
+3.  Repository Interface
+
+   An implementation of a data model repository MUST support the
+   following operations:
+
+   o  List data models
+
+
+
+Montville & Munyan      Expires February 7, 2019                [Page 2]
+
+Internet-Draft             SACM EADM Registry                August 2018
+
+
+   o  Get data model X
+
+   o  Add data model
+
+   o  Update data model
+
+   o  Remove data model
+
+   Authorizations MUST be considered in an implementation.  Listing and
+   getting data models SHOULD be open, but MAY be constrained to
+   authorized entities.  Adding, updating, and removing data models
+   SHOULD be restricted to authorized entities only, but MAY be opened
+   to the world.  In other words, this document does not take a strong
+   stance on what should or should not be authorized for a given
+   repository.
+
+4.  Repository Data Model Metadata
+
+   In order for a repository to be queryable, a certain structure of
+   metadata about the data models needs to be described.
+
+   o  Name
+
+   o  Version
+
+   o  Endpoint applicability
+
+   o  Date created
+
+   o  Date last modified
+
+   o  Author (individual or organization)
+
+   o  Others???
+
+5.  IANA Considerations
+
+   This draft may end up defining one or more IANA tables.
+
+6.  Security Considerations
+
+   TBD
+
+7.  Acknowledgements
+
+   TBD
+
+
+
+
+
+Montville & Munyan      Expires February 7, 2019                [Page 3]
+
+Internet-Draft             SACM EADM Registry                August 2018
+
+
+8.  Change Log
+
+   TBD
+
+9.  Contributors
+
+   TBD
+
+10.  Normative References
+
+   [I-D.mandm-sacm-architecture]
+              Montville, A. and B. Munyan, "Security Automation and
+              Continuous Monitoring (SACM) Architecture", draft-mandm-
+              sacm-architecture-01 (work in progress), March 2018.
+
+Appendix A.  The Attic
+
+   TBD
+
+Authors' Addresses
+
+   Adam W. Montville
+   Center for Internet Security
+   31 Tech Valley Drive
+   East Greenbush, NY  12061
+   USA
+
+   Email: adam.w.montville@gmail.com
+
+
+   Bill Munyan
+   Center for Internet Security
+   31 Tech Valley Drive
+   East Greenbush, NY  12061
+   USA
+
+   Email: bill.munyan.ietf@gmail.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Montville & Munyan      Expires February 7, 2019                [Page 4]

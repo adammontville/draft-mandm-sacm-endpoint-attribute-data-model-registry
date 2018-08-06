@@ -282,12 +282,16 @@ ul.toc li {
 
   <link href="#rfc.toc" rel="Contents"/>
 <link href="#rfc.section.1" rel="Chapter" title="1 Introduction"/>
+<link href="#rfc.section.1.1" rel="Chapter" title="1.1 Scope of Solution"/>
 <link href="#rfc.section.2" rel="Chapter" title="2 Terms and Definitions"/>
-<link href="#rfc.section.3" rel="Chapter" title="3 IANA Considerations"/>
-<link href="#rfc.section.4" rel="Chapter" title="4 Security Considerations"/>
-<link href="#rfc.section.5" rel="Chapter" title="5 Acknowledgements"/>
-<link href="#rfc.section.6" rel="Chapter" title="6 Change Log"/>
-<link href="#rfc.section.7" rel="Chapter" title="7 Contributors"/>
+<link href="#rfc.section.3" rel="Chapter" title="3 Repository Interface"/>
+<link href="#rfc.section.4" rel="Chapter" title="4 Repository Data Model Metadata"/>
+<link href="#rfc.section.5" rel="Chapter" title="5 IANA Considerations"/>
+<link href="#rfc.section.6" rel="Chapter" title="6 Security Considerations"/>
+<link href="#rfc.section.7" rel="Chapter" title="7 Acknowledgements"/>
+<link href="#rfc.section.8" rel="Chapter" title="8 Change Log"/>
+<link href="#rfc.section.9" rel="Chapter" title="9 Contributors"/>
+<link href="#rfc.references" rel="Chapter" title="10 Normative References"/>
 <link href="#rfc.appendix.A" rel="Chapter" title="A The Attic"/>
 <link href="#rfc.authors" rel="Chapter"/>
 
@@ -297,9 +301,9 @@ ul.toc li {
 
   <meta name="dct.creator" content="Montville, A. and B. Munyan" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-mandm-sacm-endpoint-attribute-data-model-registry-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2018-7-24" />
-  <meta name="dct.abstract" content="This memo describes a method of using both the IANA registry system and proprietary registries to store endpoint attribute data models that can be used for the purpose of automated endpoint assessment." />
-  <meta name="description" content="This memo describes a method of using both the IANA registry system and proprietary registries to store endpoint attribute data models that can be used for the purpose of automated endpoint assessment." />
+  <meta name="dct.issued" scheme="ISO8601" content="2018-8-06" />
+  <meta name="dct.abstract" content="This memo describes a an interface to registries used to store endpoint attribute data models. These data models are used for the purpose of automated endpoint assessment." />
+  <meta name="description" content="This memo describes a an interface to registries used to store endpoint attribute data models. These data models are used for the purpose of automated endpoint assessment." />
 
 </head>
 
@@ -317,12 +321,12 @@ ul.toc li {
   <td class="right">B. Munyan</td>
 </tr>
 <tr>
-  <td class="left">Intended status: Informational</td>
+  <td class="left">Intended status: Standards Track</td>
   <td class="right">CIS</td>
 </tr>
 <tr>
-  <td class="left">Expires: January 25, 2019</td>
-  <td class="right">July 24, 2018</td>
+  <td class="left">Expires: February 7, 2019</td>
+  <td class="right">August 06, 2018</td>
 </tr>
 
     	
@@ -335,14 +339,14 @@ ul.toc li {
   <h1 id="rfc.abstract">
   <a href="#rfc.abstract">Abstract</a>
 </h1>
-<p>This memo describes a method of using both the IANA registry system and proprietary registries to store endpoint attribute data models that can be used for the purpose of automated endpoint assessment.</p>
+<p>This memo describes a an interface to registries used to store endpoint attribute data models. These data models are used for the purpose of automated endpoint assessment.</p>
 <h1 id="rfc.status">
   <a href="#rfc.status">Status of This Memo</a>
 </h1>
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on January 25, 2019.</p>
+<p>This Internet-Draft will expire on February 7, 2019.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
@@ -355,12 +359,16 @@ ul.toc li {
   <ul class="toc">
 
   	<li>1.   <a href="#rfc.section.1">Introduction</a></li>
-<li>2.   <a href="#rfc.section.2">Terms and Definitions</a></li>
-<li>3.   <a href="#rfc.section.3">IANA Considerations</a></li>
-<li>4.   <a href="#rfc.section.4">Security Considerations</a></li>
-<li>5.   <a href="#rfc.section.5">Acknowledgements</a></li>
-<li>6.   <a href="#rfc.section.6">Change Log</a></li>
-<li>7.   <a href="#rfc.section.7">Contributors</a></li>
+<ul><li>1.1.   <a href="#rfc.section.1.1">Scope of Solution</a></li>
+</ul><li>2.   <a href="#rfc.section.2">Terms and Definitions</a></li>
+<li>3.   <a href="#rfc.section.3">Repository Interface</a></li>
+<li>4.   <a href="#rfc.section.4">Repository Data Model Metadata</a></li>
+<li>5.   <a href="#rfc.section.5">IANA Considerations</a></li>
+<li>6.   <a href="#rfc.section.6">Security Considerations</a></li>
+<li>7.   <a href="#rfc.section.7">Acknowledgements</a></li>
+<li>8.   <a href="#rfc.section.8">Change Log</a></li>
+<li>9.   <a href="#rfc.section.9">Contributors</a></li>
+<li>10.   <a href="#rfc.references">Normative References</a></li>
 <li>Appendix A.   <a href="#rfc.appendix.A">The Attic</a></li>
 <li><a href="#rfc.authors">Authors' Addresses</a></li>
 
@@ -368,19 +376,57 @@ ul.toc li {
   </ul>
 
   <h1 id="rfc.section.1"><a href="#rfc.section.1">1.</a> <a href="#introduction" id="introduction">Introduction</a></h1>
-<p id="rfc.section.1.p.1">TBD</p>
+<p id="rfc.section.1.p.1">Security automation assessments (i.e. vulnerability assessment, configuration assessment, etc.) often require enumerations of endpoint attributes to be known before such assessments can take place. As technologies evolve and emerge, enumerations may change and new enumerations come into existence. As such changes to the set of enumerations happen frequently. A problem yet to be solved in security automation is the ability for enterprises to quickly, even dynamically, acquire (or potentially define) enumerations of endpoint attributes and make those enumerations available to the security automation tools operating in their enterprise.</p>
+<h1 id="rfc.section.1.1"><a href="#rfc.section.1.1">1.1.</a> <a href="#scope-of-solution" id="scope-of-solution">Scope of Solution</a></h1>
+<p id="rfc.section.1.1.p.1">The scope of this solution is constrained to the repository interface, and specifically avoids details about the data models stored in the repository. This is because data models may vary, depending on attribute collection needs. Coarsely, network devices are likely to have models represented using YANG, whereas traditional devices may be represented using OVAL.</p>
 <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> <a href="#terms-and-definitions" id="terms-and-definitions">Terms and Definitions</a></h1>
 <p id="rfc.section.2.p.1">TBD</p>
-<h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a></h1>
-<p id="rfc.section.3.p.1">TBD</p>
-<h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a></h1>
-<p id="rfc.section.4.p.1">TBD</p>
-<h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> <a href="#acknowledgements" id="acknowledgements">Acknowledgements</a></h1>
-<p id="rfc.section.5.p.1">TBD</p>
-<h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> <a href="#change-log" id="change-log">Change Log</a></h1>
+<h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a> <a href="#repository-interface" id="repository-interface">Repository Interface</a></h1>
+<p id="rfc.section.3.p.1">An implementation of a data model repository MUST support the following operations:</p>
+<p/>
+
+<ul>
+  <li>List data models</li>
+  <li>Get data model X</li>
+  <li>Add data model</li>
+  <li>Update data model</li>
+  <li>Remove data model</li>
+</ul>
+<p id="rfc.section.3.p.3">Authorizations MUST be considered in an implementation. Listing and getting data models SHOULD be open, but MAY be constrained to authorized entities. Adding, updating, and removing data models SHOULD be restricted to authorized entities only, but MAY be opened to the world. In other words, this document does not take a strong stance on what should or should not be authorized for a given repository.</p>
+<h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a> <a href="#repository-data-model-metadata" id="repository-data-model-metadata">Repository Data Model Metadata</a></h1>
+<p id="rfc.section.4.p.1">In order for a repository to be queryable, a certain structure of metadata about the data models needs to be described.</p>
+<p/>
+
+<ul>
+  <li>Name</li>
+  <li>Version</li>
+  <li>Endpoint applicability</li>
+  <li>Date created</li>
+  <li>Date last modified</li>
+  <li>Author (individual or organization)</li>
+  <li>Others???</li>
+</ul>
+<h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a></h1>
+<p id="rfc.section.5.p.1">This draft may end up defining one or more IANA tables.</p>
+<h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a></h1>
 <p id="rfc.section.6.p.1">TBD</p>
-<h1 id="rfc.section.7"><a href="#rfc.section.7">7.</a> <a href="#contributors" id="contributors">Contributors</a></h1>
+<h1 id="rfc.section.7"><a href="#rfc.section.7">7.</a> <a href="#acknowledgements" id="acknowledgements">Acknowledgements</a></h1>
 <p id="rfc.section.7.p.1">TBD</p>
+<h1 id="rfc.section.8"><a href="#rfc.section.8">8.</a> <a href="#change-log" id="change-log">Change Log</a></h1>
+<p id="rfc.section.8.p.1">TBD</p>
+<h1 id="rfc.section.9"><a href="#rfc.section.9">9.</a> <a href="#contributors" id="contributors">Contributors</a></h1>
+<p id="rfc.section.9.p.1">TBD</p>
+<h1 id="rfc.references"><a href="#rfc.references">10.</a> Normative References</h1>
+<table>
+  <tbody>
+    <tr>
+      <td class="reference">
+        <b id="I-D.mandm-sacm-architecture">[I-D.mandm-sacm-architecture]</b>
+      </td>
+      <td class="top"><a>Montville, A.</a> and <a>B. Munyan</a>, "<a href="http://tools.ietf.org/html/draft-mandm-sacm-architecture-01">Security Automation and Continuous Monitoring (SACM) Architecture</a>", Internet-Draft draft-mandm-sacm-architecture-01, March 2018.</td>
+    </tr>
+  </tbody>
+</table>
 <h1 id="rfc.appendix.A"><a href="#rfc.appendix.A">Appendix A.</a> <a href="#the-attic" id="the-attic">The Attic</a></h1>
 <p id="rfc.section.A.p.1">TBD</p>
 <h1 id="rfc.authors">
