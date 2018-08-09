@@ -50,6 +50,8 @@ informative:
 
 This memo describes a an interface to registries used to store endpoint attribute data models. These data models are used for the purpose of automated endpoint assessment.
 
+WORKING GROUP: The source for this draft is maintained in GitHub.  Suggested changes should be submitted as pull requests at https://github.com/adammontville/draft-mandm-sacm-endpoint-attribute-data-model-registry.  Instructions are on that page as well.
+
 --- middle
 
 
